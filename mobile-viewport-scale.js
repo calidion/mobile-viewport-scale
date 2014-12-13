@@ -1,20 +1,21 @@
-define('mobileViewportScale', ['map'], function (map) {
+define('mobileViewportScale', ['map', 'data/viewport'], function (map, viewports) {
 
   /**
    * Set viewport by browser's user agent
-   * @param userAgent
+   * @param {String} userAgent    - Browser user agent
    */
   function setDeviceViewPort(userAgent) {
     var ua = map.parse(userAgent);
     if (ua) {
-      var viewport = map[ua];
-      setViewport(viewport.width, viewport.userScalable, viewport['init-scalable'], viewport['minimum-scale'], viewport['maximum-scale']);
+      var viewport = viewports[ua];
+      if (viewport) {
+        setViewport(viewport.width, viewport.userScalable, viewport['init-scalable'], viewport['minimum-scale'], viewport['maximum-scale']);
+      }
     }
   }
 
   /**
    * Clear previous defined viewport info
-   * @returns {*}
    */
 
   function clearPredefinedViewports() {
@@ -64,7 +65,7 @@ define('mobileViewportScale', ['map'], function (map) {
   }
 
   /**
-   * Set Viewport
+   * Set viewport
    *
    * @param width
    * @param userScalable
@@ -99,8 +100,6 @@ define('mobileViewportScale', ['map'], function (map) {
     if (maxScale) {
       contents.push('maximum-scale=' + maxScale);
     }
-
-    alert(contents.join(','));
 
     viewport = document.createElement('meta');
     viewport.setAttribute('name', 'viewport');

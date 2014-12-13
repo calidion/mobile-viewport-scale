@@ -1,60 +1,40 @@
-define('map', function () {
+define('map', ['data/device', 'data/os', 'data/browser', 'data/viewport'], function (devices, oses, browsers, viewports) {
 
-  var oses = [
-    {
-      'pattern': /android/,
-      'name': 'android'
-    }, {
-      'pattern': /iphone/
-    }
-  ]
-
-  var browsers = [{
-    'pattern': /micromessager/,
-    'name': 'wechat'
-  }, {
-    'pattern': /chrome/,
-    'name': 'chrome'
-  }];
-
-  var devices = [{
-    'pattern': /sm-n9008s/,
-    'name': 'android'
-  }];
-
-  var viewports =
-      {
-        'smn9008s': {
-          width: 'device-width',
-          'init-scale': 0
-        },
-        'android': {
-          width: 'device-width',
-          'init-scale': 0
-        },
-        'iphone': {
-          width: 'device-width',
-          'init-scale': 0.5,
-          'maximum-scale': 1.0
-        }
-      };
-
-  function parse(userAgent) {
+  /**
+   * Get viewport name from user agent
+   * @param {String} userAgent    - Browser user agent
+   * @returns {Object}
+   */
+  function getName(userAgent) {
     userAgent = userAgent.toLowerCase();
 
     var i = 0;
 
-    for (i = 0; i < devices.length; i++) {
-      if (devices[i].pattern.test(userAgent)) {
-        return devices[i].pattern.name;
-      }
-    }
-    for (i = 0; i < oses.length; i++) {
-      if (oses[i].pattern.test(userAgent)) {
-        return oses[i].pattern.name;
+    //The precedence of the items should be well organized
+
+    var checkers = [devices, oses, browsers];
+
+    for(var i = 0; i < checkers.length; i++) {
+      var checker = checkers[i];
+      for(var j = 0; j < checker.length; j++) {
+        if (checker[i].pattern.test(userAgent)) {
+          return checker[i].pattern.name;
+        }
       }
     }
     return 'android';
+  }
+
+  /**
+   * Get the viewport info
+   * @param {String} userAgent    - Browser user agent
+   * @returns {Object}
+   */
+
+  function parse(userAgent) {
+    userAgent = userAgent || navigator.userAgent;
+    var name = getName(userAgent);
+    return viewports[name];
   }
 
   return {
