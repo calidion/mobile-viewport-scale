@@ -1,8 +1,8 @@
 define('viewport', function () {
 
-  var viewports = {
+  return {
 
-    //default names
+    //Default names
     'android': {
       width: 'device-width',
       'init-scale': 0
@@ -14,11 +14,10 @@ define('viewport', function () {
     },
 
 
-    //device dependent names
+    //Device dependent names
     'smn9008s': {
       width: 'device-width',
       'init-scale': 0
     }
   };
-  return viewports;
 });

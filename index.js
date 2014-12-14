@@ -1,17 +1,20 @@
-define('mobileViewportScale', ['map', 'data/viewport'], function (map, viewports) {
+/**
+ * DOM related functions
+ */
+
+define('mobileViewportScale', ['map'], function (map) {
 
   /**
    * Set viewport by browser's user agent
    * @param {String} userAgent    - Browser user agent
    */
   function setDeviceViewPort(userAgent) {
-    var ua = map.parse(userAgent);
-    if (ua) {
-      var viewport = viewports[ua];
-      if (viewport) {
-        setViewport(viewport.width, viewport.userScalable, viewport['init-scalable'], viewport['minimum-scale'], viewport['maximum-scale']);
-      }
+    var viewport = map.parse(userAgent);
+
+    if (viewport) {
+      setViewport(viewport.width, viewport.userScalable, viewport['init-scalable'], viewport['minimum-scale'], viewport['maximum-scale']);
     }
+
   }
 
   /**

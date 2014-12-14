@@ -1,4 +1,4 @@
-define('boot', ['mobileViewportScale'], function(mvs) {
+require(['mobileViewportScale'], function(mvs) {
   var keyPair = {
     'userAgent': navigator.userAgent,
     'screenWidth': screen.width,

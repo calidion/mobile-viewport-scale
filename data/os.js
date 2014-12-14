@@ -1,7 +1,7 @@
 define('os', function () {
 
   // OS specific patterns and related viewport names
-  var os = [
+  return [
     {
       'pattern': /android/,
       'name': 'android'
@@ -10,5 +10,4 @@ define('os', function () {
       'name': 'iphone'
     }
   ];
-  return os;
 });

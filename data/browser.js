@@ -1,7 +1,7 @@
 define('browser', function () {
 
   // Browser specific patterns and related viewport names
-  var browsers = [
+  return [
     {
       'pattern': /android/,
       'name': 'android'
@@ -11,5 +11,4 @@ define('browser', function () {
 
     }
   ];
-  return browsers;
 });
