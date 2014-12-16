@@ -1,5 +1,7 @@
-== Mobile viewport Scale
-Auto adjust the viewport by devices, browsers, oses;
+
+# Mobile viewport Scalar
+
+Auto adjusting the viewports of pages according to devices, browsers, oses;
 
 usage:
 
