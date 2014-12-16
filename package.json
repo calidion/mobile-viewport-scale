@@ -1,0 +1,28 @@
+{
+  "name": "mobile-viewport-scale",
+  "version": "0.0.1",
+  "description": "mobile view scale",
+  "main": "index.js",
+  "directories": {
+    "test": "tests"
+  },
+  "dependencies": {
+    "grunt": "^0.4.5"
+  },
+  "devDependencies": {
+    "grunt-contrib-requirejs": "^0.4.4"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/calidion/mobile-viewport-scale.git"
+  },
+  "author": "calidion",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/calidion/mobile-viewport-scale/issues"
+  },
+  "homepage": "https://github.com/calidion/mobile-viewport-scale"
+}
