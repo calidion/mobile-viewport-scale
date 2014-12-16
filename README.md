@@ -1,7 +1,7 @@
 
 # Mobile Viewport Scalar
 
-Auto adjusting the viewports of pages according to devices, browsers, oses;
+viewports auto adjusting according to devices, browsers, oses;
 
 usage:
 
